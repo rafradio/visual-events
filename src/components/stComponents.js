@@ -9,12 +9,13 @@ const Frame = styled.div`
 `;
 
 const Container = styled.div`
-    position: relative;
+    position: ${(props) => (props.$mask && 'absolute' || 'relative')};
     width: 1440px;
     height: 1080px;
     display: flex;
-    align-items: flex-start;
-    flex-direction: row;
+    align-items: ${(props) => (props.$mask && 'center' || 'flex-start')};
+    flex-direction: ${(props) => (props.$mask && '' || 'row')};
+    justify-content: ${(props) => (props.$mask && 'center' || '')};
 `;
 
 const Vector = styled.div`
@@ -36,4 +37,13 @@ const Vector18 = styled.div`
     border-bottom: 1px solid #42567A;
 `;
 
-export { Frame, Container, Vector, Vector18 };
+const Mask = styled.div`
+    border: 1px solid #42567A;
+    display: flex;
+    position: relative;
+    width: 536px;
+    height: 530px;
+    border-radius: 50%;
+`;
+
+export { Frame, Container, Vector, Vector18, Mask };

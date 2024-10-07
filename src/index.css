@@ -98,5 +98,6 @@ body {
 }
 .text {
   flex-direction: row;
-  
+  border-radius: 50%;
+  justify-content: center;
 }
