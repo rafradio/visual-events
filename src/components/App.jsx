@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Frame, Container, Vector, Vector18, Mask } from './stComponents';
+import MaskWrap from './MaskWrap';
 
 function App() {
     return (
@@ -9,9 +10,7 @@ function App() {
                 <Vector $right></Vector>
                 <Vector18></Vector18>
             </Container>
-            <Container $mask>
-                <Mask></Mask>
-            </Container>
+            <MaskWrap />
         </Frame>
     )
 }
