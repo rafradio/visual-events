@@ -1,3 +1,5 @@
-const selectMaskDatas = state => state.mask.maskData;
+const selectAllMaskDatas = state => state.mask.maskData;
+const selectCurrentMaskBlock = state => state.mask.currentMaskBlock;
+const selectMaskData = (state, number) => state.mask.maskData.find(data => data.number == number.toString());
 
-export { selectMaskDatas };
+export { selectAllMaskDatas, selectCurrentMaskBlock, selectMaskData };

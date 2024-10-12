@@ -1,7 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { MaskRowData } from './Data/maskRowData';
 
 const initialState = {
-    maskData: [{number: '6', title: 'Наука'}],
+    maskData: MaskRowData,
+    currentMaskBlock: 3,
 };
 
 export const maskSlice = createSlice({
