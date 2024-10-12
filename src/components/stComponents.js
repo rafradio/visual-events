@@ -97,4 +97,19 @@ const CurrentEllips = styled(Ellipse337)`
     color: #42567A;
 `;
 
-export { Frame, Container, Vector, Vector18, Mask, Ellipse337, CurrentEllips };
+const TextCurrent = styled.div`
+    width: 53px;
+    height: 30px;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    font-family: PT Sans;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    text-align: left;
+    transform: translateX(70px);
+`;
+
+export { Frame, Container, Vector, Vector18, Mask, Ellipse337, CurrentEllips, TextCurrent };

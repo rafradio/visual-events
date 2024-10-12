@@ -1,7 +1,10 @@
-import { Container, Mask, Ellipse337, CurrentEllips } from './stComponents';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectMaskDatas } from '../store/selectors';
+import { Container, Mask, Ellipse337, CurrentEllips, TextCurrent } from './stComponents';
 
 function MaskWrap() {
-    let myProps = "$first";
+    const datas = useSelector(selectMaskDatas);
+
     return (
         <Container $mask>
             <Mask>
@@ -10,7 +13,8 @@ function MaskWrap() {
                 <Ellipse337 $third></Ellipse337>
                 <Ellipse337 $fourth></Ellipse337>
                 <CurrentEllips $fifth>
-                    <p>6</p>
+                    <p>{ datas[0].number }</p>
+                    <TextCurrent>{ datas[0].title }</TextCurrent>
                 </CurrentEllips>
                 <Ellipse337 $sixth></Ellipse337>
             </Mask>
