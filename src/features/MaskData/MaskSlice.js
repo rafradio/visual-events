@@ -10,7 +10,12 @@ export const maskSlice = createSlice({
     name: 'mask',
     initialState,
     reducers: {
+        maskChangeElement: (state, action) => {
+            state.currentMaskBlock = action.payload;
+        },
     },
 });
+
+export const { maskChangeElement } = maskSlice.actions
 
 export default maskSlice.reducer;
