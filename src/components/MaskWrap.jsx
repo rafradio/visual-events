@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {  selectAllMaskDatas, selectCurrentMaskBlock, selectMaskData, selectMaskAngle } from '../store/selectors';
+import {  selectAllMaskDatas, selectCurrentMaskBlock, selectMaskData, selectMaskAngle, selectMaskCurrentAngles } from '../store/selectors';
 import { Container, Mask, Ellipse337, CurrentEllips, TextCurrent, EllipseDesk } from './stComponents';
 import { maskChangeElement, maskAddElement, maskRemoveElement } from '../features/MaskData/maskSlice';
 
 function MaskWrap() {
     const dispatch = useDispatch();
     const MASKPROPS = ["first", "second", "third", "fourth", "fifth", "sixth"];
-    const MASKANGLES = [135, 180, 225, 315, 0, 45];
+    const MASKANGLES = useSelector(selectMaskCurrentAngles);
     const datas = useSelector(selectAllMaskDatas);
     const currentMask = useSelector(selectCurrentMaskBlock);
     const currentAngle = useSelector(selectMaskAngle);
@@ -14,11 +14,13 @@ function MaskWrap() {
 
     const maskClick = (e, number) => {
         // e.stopPropagation();
-        dispatch(maskChangeElement(number));
+        let difference = (135 - MASKANGLES[number]);
+        dispatch(maskChangeElement(number, difference));
     }
 
     const maskMouseEnter = (e, number) => {
         // e.stopPropagation()
+        
         dispatch(maskAddElement(number));
     }
 
@@ -27,7 +29,7 @@ function MaskWrap() {
     }
 
     const renderEllipses = datas.map((data, index) => {
-        let cssRotateStyle = `rotate(${MASKANGLES[index]+currentAngle}deg) translateX(-268px) rotate(${-1*(MASKANGLES[index]+currentAngle)}deg)`;
+        let cssRotateStyle = `rotate(${MASKANGLES[index]}deg) translateX(-268px) rotate(${-1*(MASKANGLES[index])}deg)`;
         
         return(
             !(currentMask.includes(index)) ? 
