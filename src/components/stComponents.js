@@ -22,13 +22,17 @@ const Container = styled.div`
     align-items: ${(props) => (props.$mask && 'center' || 'flex-start')};
     flex-direction: ${(props) => (props.$mask && '' || 'row')};
     justify-content: ${(props) => (props.$mask && 'center' || '')};
+    z-index: ${(props) => (props.$mask && '5' || '0')};
 `;
 
 const Vector = styled.div`
     display: flex;
-    position: relative;
+    position: absolute;
     width: 50%;
     height: 100%;
+    top: 0;
+    left: ${(props) => (props.$left && '0' || '')};
+    right: ${(props) => (props.$left && '' || '0')};
     border-left: ${(props) => (props.$left && '1px solid #42567A' || '')};
     border-right: ${(props) => (props.$left && '1px solid #42567A' || '1px solid #42567A')};
 `;
