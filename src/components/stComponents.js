@@ -1,5 +1,11 @@
 import styled, { css } from 'styled-components';
 
+const handleMaskAngle = angle => {
+    console.log(angle);
+    return css`transform: rotate(135deg) translateX(-268px) rotate(-135deg);`
+    // return "color: #03a9f3; background: #000;";
+}
+
 const Frame = styled.div`
     width: 100%;
     height: 100%;
@@ -59,36 +65,22 @@ const Ellipse337 = styled.div`
     background: #42567A;
     border-radius: 50%;
     cursor: pointer;
+    transform:  ${(props) => props.$angle};
+    transition: transform 0.5s;
 
-    ${(props) => {
-        switch (props.$name) {
-            case "first":
-                return css`
-                transform: translateX(268px);
-                `;
-            case "second":
-                return css`
-                transform: translateX(-268px);
-                `;
-            case "third":
-                return css`
-                transform: rotate(45deg) translateX(268px) rotate(-45deg);
-                `;
-            case "fourth":
-                return css`
-                transform: rotate(45deg) translateX(-268px) rotate(-45deg);
-                `;
-            case "fifth":
-                return css`
-                transform: rotate(-45deg) translateX(268px) rotate(45deg);
-                `;
-            case "sixth":
-                return css`
-                transform: rotate(-45deg) translateX(-268px) rotate(45deg);
-                `;
    
-        }
-    }}
+`;
+
+const EllipseDesk = styled.div`
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
 `;
 
 const CurrentEllips = styled(Ellipse337)`
@@ -119,4 +111,4 @@ const TextCurrent = styled.div`
     transform: translateX(70px);
 `;
 
-export { Frame, Container, Vector, Vector18, Mask, Ellipse337, CurrentEllips, TextCurrent };
+export { Frame, Container, Vector, Vector18, Mask, Ellipse337, CurrentEllips, TextCurrent, EllipseDesk };

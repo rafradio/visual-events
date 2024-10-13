@@ -58,6 +58,35 @@ const Ellipse337 = styled.div`
         }
     }}
 
+     ${(props) => {
+        switch (props.$name) {
+            case "first": css`transform: ${({ angle }) => handleMaskAngle(angle)};`
+                
+                
+            case "second":
+                return css`
+                transform: rotate(180deg) translateX(-268px) rotate(-180deg);
+                `;
+            case "third":
+                return css`
+                transform: rotate(225deg) translateX(-268px) rotate(-225deg);
+                `;
+            case "fourth":
+                return css`
+                transform: rotate(315deg) translateX(-268px) rotate(-315deg);
+                `;
+            case "fifth":
+                return css`
+                transform: rotate(0deg) translateX(-268px) rotate(-0deg);
+                `;
+            case "sixth":
+                return css`
+                transform: rotate(45deg) translateX(-268px) rotate(-45deg);
+                `;
+   
+        }
+    }}
+
     ${props => props.$name == "first" ? css`
         transform: translateX(268px);
     ` : ''}

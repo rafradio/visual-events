@@ -3,7 +3,8 @@ import { MaskRowData } from './Data/maskRowData';
 
 const initialState = {
     maskData: MaskRowData,
-    currentMaskBlock: 3,
+    currentMaskBlock: [0],
+    angle: 0,
 };
 
 export const maskSlice = createSlice({
@@ -11,11 +12,20 @@ export const maskSlice = createSlice({
     initialState,
     reducers: {
         maskChangeElement: (state, action) => {
-            state.currentMaskBlock = action.payload;
+            while (state.currentMaskBlock.length) {state.currentMaskBlock.pop()}
+            state.currentMaskBlock.push(action.payload);
+            state.angle += 90;
+            // state.currentMaskBlock[0] = action.payload;
         },
+        maskAddElement: (state, action) => {
+            state.currentMaskBlock.push(action.payload);
+        },
+        maskRemoveElement: (state, action) => {
+            state.currentMaskBlock.pop();
+        }
     },
 });
 
-export const { maskChangeElement } = maskSlice.actions
+export const { maskChangeElement, maskAddElement, maskRemoveElement } = maskSlice.actions
 
 export default maskSlice.reducer;
