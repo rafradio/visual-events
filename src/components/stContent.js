@@ -71,7 +71,7 @@ const YearOfPeriod = styled.div`
     justify-content: center;
     width: 45%;
     height: 100%;
-    border: 0.2px solid red;
+    color: ${(props) => (props.$left && '#3877EE' || '#de4c4c')};
 `;
 
 export { ContentContainer, HistoricalTitle, TitleBorder, TitleContent, YearslWrap, YearslTitle, YearOfPeriod }
