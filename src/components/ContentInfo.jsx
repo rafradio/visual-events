@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAllYearsDatas, selectCurrentYearBlock, selectYearsBlock, selectDiffYears } from '../store/selectorsYears';
+import { selectAllYearsDatas, selectCurrentYearBlock, selectYearsBlock, selectDiffYears, 
+    selectFlafChangingYears } from '../store/selectorsYears';
 import { selectCurrentMaskBlock } from '../store/selectors';
 import { HistoricalTitle, TitleBorder, TitleContent, YearslWrap, YearslTitle, YearOfPeriod } from "./stContent";
+import { yearChangeFlag } from '../features/YearsData/YearsSlice';
 
 function ContentInfo() {
     const dispatch = useDispatch();
@@ -10,6 +12,7 @@ function ContentInfo() {
     const currentMask = useSelector(selectCurrentMaskBlock);
     const currentYearsBlock = useSelector(state => selectYearsBlock(state, currentMask[0]));
     const diffYears = useSelector(selectDiffYears);
+    const flagYearChanging = useSelector(selectFlafChangingYears);
 
     const AnimationForYears = () => {
         const [value, setValue] = useState(1977);
@@ -17,13 +20,13 @@ function ContentInfo() {
 
         useEffect(() => {
             let intervalYear;
-            if (value < 1988) {
+            if ((value < 1988) && flagYearChanging) {
                 intervalYear = setInterval(() => {
                     setValue((prevValue) =>
                         prevValue + 1);
                 }, 300);
             } else {
-
+                if (value >= 1988) dispatch(yearChangeFlag);
             }
 
             return () => {
