@@ -16,7 +16,6 @@ export const maskSlice = createSlice({
             reducer(state, action) {
                 while (state.currentMaskBlock.length) {state.currentMaskBlock.pop()}
                 state.currentMaskBlock.push(action.payload.num);
-                
                 state.angle += action.payload.diff;
                 state.currentAngles = state.currentAngles.map((elm) => elm+action.payload.diff);
                 state.currentAngles.forEach((elm, ind) => {console.log(elm)});
