@@ -19,9 +19,12 @@ export const yearsSlice = createSlice({
         yearChangeCurrent: (state, action) => {
             state.yearsCurrentData = state.yearsData[action.payload];
         },
+        animateYearChange: (state, action) => {
+            state.yearsCurrentData = action.payload;
+        },
     },
 });
 
-export const { yearChangeFlag, yearChangeCurrent } = yearsSlice.actions
+export const { yearChangeFlag, yearChangeCurrent, animateYearChange } = yearsSlice.actions
 
 export default yearsSlice.reducer;
