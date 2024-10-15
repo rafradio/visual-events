@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {  selectAllMaskDatas, selectCurrentMaskBlock, selectMaskData, selectMaskAngle, selectMaskCurrentAngles } from '../store/selectors';
 import { Container, Mask, Ellipse337, CurrentEllips, TextCurrent, EllipseDesk } from './stComponents';
-import { maskChangeElement, maskAddElement, maskRemoveElement } from '../features/MaskData/maskSlice';
+import { maskChangeElement, maskAddElement, maskRemoveElement } from '../features/MaskData/MaskSlice';
 import { yearChangeFlag } from '../features/YearsData/YearsSlice';
+import { selectYearsBlock } from '../store/selectorsYears';
+import { yearChangeCurrent } from '../features/YearsData/YearsSlice';
 
 function MaskWrap() {
     const dispatch = useDispatch();
@@ -13,11 +15,13 @@ function MaskWrap() {
     const currentAngle = useSelector(selectMaskAngle);
     const currentData = useSelector(state => selectMaskData(state, currentMask));
 
+
     const maskClick = (e, number) => {
         // e.stopPropagation();
         let difference = (135 - MASKANGLES[number]);
         dispatch(maskChangeElement(number, difference));
         dispatch(yearChangeFlag());
+        dispatch(yearChangeCurrent(number));
     }
 
     const maskMouseEnter = (e, number) => {

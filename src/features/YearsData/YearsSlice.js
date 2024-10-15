@@ -3,6 +3,7 @@ import { YearsRowData } from './Data/YearsRowData';
 
 const initialState = {
     yearsData: YearsRowData,
+    yearsCurrentData: YearsRowData[0],
     currentYearBlock: 0,
     diffYears: {first: [1981, 1986], last: [1981, 1986]},
     flagChangingYears: false,
@@ -15,9 +16,12 @@ export const yearsSlice = createSlice({
         yearChangeFlag: (state, action) => {
             state.flagChangingYears = state.flagChangingYears ? false : true;
         },
+        yearChangeCurrent: (state, action) => {
+            state.yearsCurrentData = state.yearsData[action.payload];
+        },
     },
 });
 
-export const { yearChangeFlag } = yearsSlice.actions
+export const { yearChangeFlag, yearChangeCurrent } = yearsSlice.actions
 
 export default yearsSlice.reducer;
