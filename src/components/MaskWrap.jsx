@@ -36,9 +36,10 @@ function MaskWrap() {
         let difference = (135 - MASKANGLES[number]);
         dispatch(maskChangeElement(number, difference));
         dispatch(yearChangeFlag());
+
         arrayOfYears[0].forEach((item, ind) => {
             console.log(item);
-            setTimeout(() => {dispatch(animateYearChange([item, arrayOfYears[1][ind] ]))}, 300);
+            setTimeout(() => {dispatch(animateYearChange([item, arrayOfYears[1][ind] ]))}, ind*50);
         });
         // dispatch(yearChangeCurrent(number));
     }
